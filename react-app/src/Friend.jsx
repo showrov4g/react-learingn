@@ -4,6 +4,7 @@ export default function Friend(friend){
         <div>
             <Li>Name:{name}</Li>
             <li>Email:{email} </li>
+            <h1>ghosh</h1>
         </div>
     )
 }
