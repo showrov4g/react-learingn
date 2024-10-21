@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./Country.css";
+import CountryDetails from "../CountryDetails/CountryDetails";
 
-const Country = ({ country, handelVisitedCountry }) => {
+const Country = ({ country, handelVisitedCountry, handelVisitedFlags }) => {
   const { name, flags, population, area, cca3 } = country;
 
   const [visited, setvisited] = useState();
@@ -10,7 +11,8 @@ const Country = ({ country, handelVisitedCountry }) => {
     setvisited(!visited);
   };
 
-  console.log(handelVisitedCountry)
+
+
   return (
     <div className={`country ${visited ? "visited" : "non-visited"}`}>
       <h3 style={{ color: visited ? "green" : "white" }}>{name.common}</h3>
@@ -20,10 +22,18 @@ const Country = ({ country, handelVisitedCountry }) => {
       <p>
         <small>code: {cca3}</small>
       </p>
-      <button>Mark visited</button>
+      <button onClick={()=>{handelVisitedCountry(country)}}>Mark visited</button>
+      <br />
+      <button onClick={()=> handelVisitedFlags(country.flags.png)}>Add visited Flag</button>
       <br />
       <button onClick={handelVisited}>{visited ? "Visited" : "Going"}</button>
       {visited ? " I have visited This country" : "I want to visit"}
+      <hr />
+      <CountryDetails 
+      country={country} 
+      handelVisitedCountry={handelVisitedCountry}
+      handelVisitedFlags={handelVisitedFlags}
+      ></CountryDetails>
     </div>
   );
 };
