@@ -34,11 +34,19 @@ function App() {
     },
   ];
 
+  const [productList, setProductList] = useState(product);
+
+  const incrementQuantity = (index) => {
+    const newProductList = [...productList]
+    newProductList[index].quantity++;
+    setProductList(incrementQuantity)
+  };
+
   return (
     <>
       <div className="w-11/12 mx-auto">
         <Navbar></Navbar>
-        <ProductList product={product}></ProductList>
+        <ProductList product={product} incrementQuantity={incrementQuantity}></ProductList>
         <Footer></Footer>
       </div>
     </>

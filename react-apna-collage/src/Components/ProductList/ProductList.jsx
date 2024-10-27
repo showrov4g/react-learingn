@@ -6,7 +6,7 @@ const ProductList = ({product}) => {
     return (
         product.map((product, idx) =>{
             return (
-                <Product key={idx} product={product}></Product>
+                <Product key={idx} product={product} incrementQuantity={product.incrementQuantity}></Product>
             )
         })
     );

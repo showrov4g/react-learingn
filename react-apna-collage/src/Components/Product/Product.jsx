@@ -1,5 +1,5 @@
 const Product = (product) => {
-  const handleIncrement =(index) =>{
+  const incrementQuantity =(index) =>{
       console.log("Button click")
   }
 
@@ -12,7 +12,7 @@ const Product = (product) => {
         <h2 className="text-4xl">Product price: {price}</h2>
       </div>
       <div className="join join-vertical lg:join-horizontal">
-        <button className="btn join-item" onClick={()=>handleIncrement()} >Add</button>
+        <button className="btn join-item" onClick={()=>incrementQuantity(product.product.index)} >Add</button>
         <button className="btn join-item">{quantity}</button>
         <button className="btn join-item">Remove</button>
       </div>
