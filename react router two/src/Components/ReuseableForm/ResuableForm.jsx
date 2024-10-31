@@ -1,20 +1,25 @@
 import React from "react";
 
-const ResuableForm = ({formTitle,handleSubmit ,submitButtonText}) => {
-    const handleLocalSubmit = (e)=>{
-        e.preventDefault();
-        const data = {
-            name: e.target.name.value,
-            email: e.target.email.value,
-            password: e.target.password.value
-        }
-        handleSubmit();
-    }
+const ResuableForm = ({
+  formTitle,
+  handleSubmit,
+  submitButtonText,
+  children,
+}) => {
+  const handleLocalSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    handleSubmit();
+  };
 
   return (
     <div>
       <form onSubmit={handleLocalSubmit}>
-        <h2>{formTitle}</h2>
+        {children}
         <input type="text" name="name" />
         <br />
         <input type="email" id="" name="email" />
