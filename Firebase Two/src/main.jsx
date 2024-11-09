@@ -7,6 +7,7 @@ import MainLayout from "./Layout/MainLayout.jsx";
 import Home from "./Components/Home.jsx";
 import Login from "./Components/Login.jsx";
 import Register from "./Components/Register.jsx";
+import SingUp from "./Components/SingUp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
+      },
+      {
+        path: 'signup',
+        element:<SingUp></SingUp>
       }
     ]
   },
