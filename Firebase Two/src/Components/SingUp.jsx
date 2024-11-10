@@ -1,19 +1,36 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../Firebase.init";
+import { useState } from "react";
 
 const SingUp = () => {
-
+    const [errorMessage, setErrorMessage] = useState('')
+    const [success, setSuccess] =useState(false);
     
   const handleSubmit = (e) => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    console.log(typeof(password))
+
+    setErrorMessage('')
+    setSuccess(false)
+
+      if(password.length === 6){
+        setErrorMessage("password must be 6 character or more")
+        return
+      }
+
+
         createUserWithEmailAndPassword(auth, email, password )
         .then(res => {
             console.log(res)
+            setSuccess(true)
         } )
         .catch(error =>{
             console.log(error);
+            setErrorMessage(error.message)
+            setSuccess(false)
         })
 
 
@@ -56,6 +73,12 @@ const SingUp = () => {
           <button className="btn btn-primary">Sign Up Now</button>
         </div>
       </form>
+      {
+        errorMessage && <p className="text-red-700">{errorMessage}</p>
+      }
+      {
+        success && <p className="text-green-600">Successfully sign up</p>
+      }
     </div>
   );
 };
