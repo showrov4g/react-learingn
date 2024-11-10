@@ -20,7 +20,13 @@ const SingUp = () => {
         setErrorMessage("password must be 6 character or more")
         return
       }
+      
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
+      if(!passwordRegex.test(password)){
+        setErrorMessage("Password must be One Uppercase one Lowercase and one number and one special Character");
+        return;
+      }
 
         createUserWithEmailAndPassword(auth, email, password )
         .then(res => {
@@ -32,9 +38,6 @@ const SingUp = () => {
             setErrorMessage(error.message)
             setSuccess(false)
         })
-
-
-
 
   };
 
