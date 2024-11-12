@@ -8,6 +8,9 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import { ThemeProvider } from "@material-tailwind/react";
 import AuthProvider from "./Components/Providers/AuthProvider";
+import Orders from "./Components/Orders";
+import PrivateRoute from "./Components/PrivateRoute";
+import Profile from "./Components/Profile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +28,20 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register></Register>,
       },
+      {
+        path: "orders",
+        element: (
+          <PrivateRoute>
+            <Orders></Orders>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'profile',
+        element: <PrivateRoute>
+          <Profile></Profile>
+        </PrivateRoute>
+      }
     ],
   },
 ]);
